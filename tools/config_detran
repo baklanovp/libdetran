@@ -31,7 +31,8 @@ cmake                                              \
 -D DETRAN_ENABLE_OPENMP=NO                         \
 -D DETRAN_ENABLE_PYTHON=YES                        \
 -D DETRAN_ENABLE_TEST=NO                           \
--D SWIG_EXECUTABLE=/usr/bin/swig                  \
+-D SWIG_EXECUTABLE=/home/bakl/bin/miniconda3/envs/py2/bin/swig                  \
+-D SWIG_DIR=/home/bakl/bin/miniconda3/envs/py2/share/swig/3.0.12                  \
 -D CMAKE_INSTALL_PREFIX=/home/bakl/Sn/Release/c_cpp/detran/install \
 /home/bakl/Sn/Release/c_cpp/detran/libdetran/src
 
