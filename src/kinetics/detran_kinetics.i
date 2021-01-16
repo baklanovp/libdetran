@@ -131,12 +131,9 @@ setCallbackMethod(1, // this is a *unique* identifier
             np(int) -- number of precursors
       '''
       
-      // ## Create a material smart pointer.  It is returned as a TDMat.
       mat = PyTimeDependentMaterial.Create(nm, ng, np, name)
       self.material = mat
       
-      // ## Set the material update function (the user *must* implement this).
-      // ## Note, we need to upcast to PYTDMat to do so.
       upcast(self.material).set_update_impl(self.update_material)
           
     def update(self, t, dt, order, synthetic) :
@@ -154,3 +151,10 @@ setCallbackMethod(1, // this is a *unique* identifier
 //---------------------------------------------------------------------------//
 //              end of detran_material.i
 //---------------------------------------------------------------------------//
+      // // ## Create a material smart pointer.  It is returned as a TDMat.
+      // mat = PyTimeDependentMaterial.Create(nm, ng, np, name)
+      // self.material = mat
+      
+      // // ## Set the material update function (the user *must* implement this).
+      // // ## Note, we need to upcast to PYTDMat to do so.
+      // upcast(self.material).set_update_impl(self.update_material)

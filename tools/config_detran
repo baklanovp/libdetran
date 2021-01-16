@@ -24,9 +24,14 @@
 # /home/bakl/Sn/Release/c_cpp/detran/libdetran/src
 
 
+#####
+#  less /usr/share/cmake-3.10/Modules/FindPythonLibs.cmakeq
+
 rm -f CMakeCache.txt;
 cmake                                              \
 -D CMAKE_BUILD_TYPE=Release                        \
+-D PYTHON_LIBRARY=/home/bakl/bin/miniconda3/envs/py2/bin    \
+-D PYTHON_INCLUDE_DIR=/home/bakl/bin/miniconda3/envs/py2/include/python2.7       \
 -D DETRAN_ENABLE_DEBUG=NO                          \
 -D DETRAN_ENABLE_OPENMP=NO                         \
 -D DETRAN_ENABLE_PYTHON=YES                        \
