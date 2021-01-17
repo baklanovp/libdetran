@@ -25,21 +25,50 @@
 
 
 #####
-#  less /usr/share/cmake-3.10/Modules/FindPythonLibs.cmakeq
+#  less /usr/share/cmake-3.10/Modules/FindPythonLibs.cmake
+
+# $ git co -b v3.4_branch v3.4
+# (py2) bakl@pra:~/bin/petsc$ python2 './configure' 'PETSC_ARCH=linux-gnu' '--with-cc=gcc' '--with-cxx=g++' '--with-fc=gfortran' '--download-mpich' 'with-c2html=0'
+
+
+# SETUP 
+DETRAN_DIR=${HOME}/Sn/Release/c_cpp/detran
+CONDA_DIR=${HOME}/bin/miniconda3/
+PY_ENV_DIR=$CONDA_DIR/envs/py2
+
+
+# INSTALL
+# $ mkdir -p  DETRAN_DIR/install
+# $ cd DETRAN_DIR
+# $ git clone https://github.com/baklanovp/libdetran.git 
+# $ git clone https://github.com/baklanovp/detran-examples.git
+# $ 
+
+# $ conda create -n py2 python=2
+# $ conda activate py2
+# $ conda install numpy pandas 
+# $ conda install -c conda-forge matplotlib petsc
+
+# cd DETRAN_DIR/src
+# $ ../tools/config_detran
+
 
 rm -f CMakeCache.txt;
 cmake                                              \
 -D CMAKE_BUILD_TYPE=Release                        \
--D PYTHON_LIBRARY=/home/bakl/bin/miniconda3/envs/py2/bin    \
--D PYTHON_INCLUDE_DIR=/home/bakl/bin/miniconda3/envs/py2/include/python2.7       \
+-D PYTHON_LIBRARY=$PY_ENV_DIR/bin    \
+-D PYTHON_INCLUDE_DIR=$PY_ENV_DIR/include/python2.7       \
+-D DETRAN_ENABLE_PYTHON=YES                        \
+-D PETSC_DIR=${HOME}/bin/petsc                \
+-D PETSC_ARCH=linux-gnu                   \
+-D DETRAN_ENABLE_PETSC=YES                         \
+-D SWIG_EXECUTABLE=$PY_ENV_DIR/bin/swig                  \
+-D SWIG_DIR=$PY_ENV_DIR/share/swig/3.0.12                  \
+-D DETRAN_ENABLE_TEST=NO                           \
 -D DETRAN_ENABLE_DEBUG=NO                          \
 -D DETRAN_ENABLE_OPENMP=NO                         \
--D DETRAN_ENABLE_PYTHON=YES                        \
--D DETRAN_ENABLE_TEST=NO                           \
--D SWIG_EXECUTABLE=/home/bakl/bin/miniconda3/envs/py2/bin/swig                  \
--D SWIG_DIR=/home/bakl/bin/miniconda3/envs/py2/share/swig/3.0.12                  \
--D CMAKE_INSTALL_PREFIX=/home/bakl/Sn/Release/c_cpp/detran/install \
-/home/bakl/Sn/Release/c_cpp/detran/libdetran/src
+-D CMAKE_INSTALL_PREFIX=$DETRAN_DIR/install \
+$DETRAN_DIR/libdetran/src
 
 make -j install
 
