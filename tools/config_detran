@@ -52,6 +52,9 @@ PY_ENV_DIR=$CONDA_DIR/envs/py2
 # cd DETRAN_DIR/src
 # $ ../tools/config_detran
 
+# -D PETSC_DIR=${HOME}/bin/petsc                \
+# -D PETSC_ARCH=linux-gnu                   \
+
 
 rm -f CMakeCache.txt;
 cmake                                              \
@@ -59,9 +62,7 @@ cmake                                              \
 -D PYTHON_LIBRARY=$PY_ENV_DIR/bin    \
 -D PYTHON_INCLUDE_DIR=$PY_ENV_DIR/include/python2.7       \
 -D DETRAN_ENABLE_PYTHON=YES                        \
--D PETSC_DIR=${HOME}/bin/petsc                \
--D PETSC_ARCH=linux-gnu                   \
--D DETRAN_ENABLE_PETSC=YES                         \
+-D DETRAN_ENABLE_PETSC=NO                         \
 -D SWIG_EXECUTABLE=$PY_ENV_DIR/bin/swig                  \
 -D SWIG_DIR=$PY_ENV_DIR/share/swig/3.0.12                  \
 -D DETRAN_ENABLE_TEST=NO                           \
