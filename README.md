@@ -23,10 +23,13 @@ Current features:
 # INSTALLATION
 
 ### Create environment
-# $ conda create -n py2 python=2
-# $ conda activate py2
-# $ conda install numpy pandas 
-# $ conda install -c conda-forge matplotlib petsc
+```
+>>> conda create -n py2 python=2
+>>> conda activate py2
+>>> conda install numpy pandas 
+>>> conda install -c conda-forge matplotlib petsc
+```
+
 
 ### Install Petsc
 - https://damask3.mpie.de/installation/damask-source/spectral-solver/petsc/
@@ -42,6 +45,8 @@ Current features:
     COPTFLAGS="-O3 -xHost -no-prec-div" CXXOPTFLAGS="-O3 -xHost -no-prec-div" \
      FOPTFLAGS="-O3 -xHost -no-prec-div" \
      PETSC_DIR=$(pwd)```
+```
+
 
 ### Install Slepc
 - https://slepc.upv.es/documentation/
@@ -75,8 +80,10 @@ Current features:
 >>> git clone https://github.com/baklanovp/detran-examples.git
 ``` 
 
-### Make program and install
-# cd DETRAN_DIR/src
-# $ ../tools/config_detran
 
+### Make program and install
+```
+>>> cd DETRAN_DIR/src
+>>> ../tools/config_detran
+```
 
