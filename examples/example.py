@@ -3,6 +3,9 @@
 # The problem we'll solve is a one group, homogeneous slab, with
 # a uniform, isotropic source, and vacuum boundaries.
 
+import sys, os
+sys.path.insert(0, '/home/bakl/Sn/Release/c_cpp/detran/install/python')
+
 from detran import *
 
 # Next, create an input database, and fill it with some basic entries.
