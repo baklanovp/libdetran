@@ -106,7 +106,7 @@ void PetscSolver::set_operators(SP_matrix A, SP_db db)
           levels = d_db->get<int>("petsc_pc_factor_levels");
         PCFactorSetLevels(pc, levels);
         // Fill zeros on the diagonal, even if they wouldn't be
-        PCFactorSetAllowDiagonalFill(pc);
+        PCFactorSetAllowDiagonalFill(pc, PETSC_FALSE); // bakl https://www.mcs.anl.gov/petsc/petsc-current/docs/manualpages/PC/PCFactorSetAllowDiagonalFill.html
       }
       // LU
       else if (petsc_pc_type == "lu")
@@ -139,10 +139,13 @@ void PetscSolver::set_operators(SP_matrix A, SP_db db)
   // the option of using a second matrix for preconditioning.
   // That's fine, though, since any non-A pc's will be shell
   // operations, which are independent of this choice.
+  // bakl ierr = KSPSetOperators(d_petsc_solver,
+  //                        d_A->petsc_matrix(),
+  //                        d_A->petsc_matrix(),
+  //                        SAME_NONZERO_PATTERN);
   ierr = KSPSetOperators(d_petsc_solver,
                          d_A->petsc_matrix(),
-                         d_A->petsc_matrix(),
-                         SAME_NONZERO_PATTERN);
+                         d_A->petsc_matrix());
 
   KSPGMRESSetRestart(d_petsc_solver, 30);
   // Set the preconditioner side.

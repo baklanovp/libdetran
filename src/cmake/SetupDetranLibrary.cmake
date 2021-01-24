@@ -50,7 +50,7 @@ endif()
 if(DETRAN_ENABLE_PYTHON)
   # SWIG setup
   set_source_files_properties(detran_${LIB_NAME}.i PROPERTIES CPLUSPLUS ON)
-  swig_add_module(${LIB_NAME} python detran_${LIB_NAME}.i)
+  swig_add_library(${LIB_NAME} LANGUAGE python SOURCES detran_${LIB_NAME}.i)
   swig_link_libraries(${LIB_NAME} ${PYTHON_LIBRARIES} ${LIB_NAME})
   # Install the module and library
   install(FILES ${CMAKE_BINARY_DIR}/${LIB_NAME}/${LIB_NAME}.py
