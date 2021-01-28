@@ -27,8 +27,10 @@ Current features:
 >>> conda create -n py2 python=2
 >>> conda activate py2
 >>> conda install numpy pandas 
->>> conda install -c conda-forge matplotlib petsc
+>>> conda install -c conda-forge matplotlib 
 ```
+
+You should install swig v 3.0.12 
 
 
 ### Install Petsc
@@ -44,7 +46,7 @@ Current features:
     --with-c2html=0 --with-debugging=0 --with-ssl=0 --with-x=0 \
     COPTFLAGS="-O3 -xHost -no-prec-div" CXXOPTFLAGS="-O3 -xHost -no-prec-div" \
      FOPTFLAGS="-O3 -xHost -no-prec-div" \
-     PETSC_DIR=$(pwd)```
+     PETSC_DIR=$(pwd)
 ```
 
 
